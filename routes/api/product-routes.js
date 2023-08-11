@@ -31,7 +31,6 @@ router.get('/', async (req, res) => {
 
 // CREATE a product
 router.post('/', (req, res) => {
-  // use sequelize's `create()` method to add a row to the table
   Product.create({
     product_name: req.body.product_name,
     brand_name: req.body.brand_name,
@@ -47,7 +46,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// UPDATE product based on its id
+// UPDATE product by id
 router.put('/:id', (req, res) => {
   Product.update(
     {
@@ -69,7 +68,7 @@ router.put('/:id', (req, res) => {
     .catch((err) => res.json(err));
 });
   
-  // DELETE route for a product with a matching id
+  // DELETE route for a product by id
   router.delete('/:id', (req, res) => {
     Product.destroy({
       where: {
